@@ -334,3 +334,33 @@
 
 })();
 
+
+// personal function
+
+window.onload = function calculateAge(date) 
+{
+    const now = new Date();
+    const diff_me = Math.abs(now - new Date("1994/04/22"));
+    const diff_baby = Math.abs(now - new Date("2020/11/11"));
+    document.getElementById("my_age").innerHTML = Math.floor(diff_me / (1000 * 60 * 60 * 24 * 365)); 
+	document.getElementById("baby_age").innerHTML = Math.floor(diff_baby / (1000 * 60 * 60 * 24 * 365)); 
+}
+$('#myForm').on('submit', function(event) {
+    event.preventDefault(); // prevent reload
+    
+    var formData = new FormData(this);
+    formData.append('service_id', 'service_bcr3fod');
+    formData.append('template_id', 'template_amkoj1h');
+    formData.append('user_id', 'uR2CRhS189Ek9e6ry');
+ 
+    $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+        type: 'POST',
+        data: formData,
+        contentType: false, // auto-detection
+        processData: false // no need to parse formData to string
+    }).done(function() {
+        alert('Your mail was sent successfully!');
+    }).fail(function(error) {
+        alert('Oops... ' + JSON.stringify(error));
+    });
+});

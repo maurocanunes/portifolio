@@ -426,7 +426,7 @@ a {
   opacity: 1;
   display: block;
   width: 100%;
-  height: 100%;
+  height: 15rem;
   -webkit-transition: .5s ease;
   -o-transition: .5s ease;
   transition: .5s ease;
@@ -491,6 +491,15 @@ a {
   .resume-item h3 {
     color: #bac964;
     font-size: 20px; }
+  .resume-item h2 {
+    color: #bac964;
+    font-size: 16px;
+  }
+  .resume-item ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+  }
   .resume-item .school {
     color: rgba(255, 255, 255, 0.3); }
   .resume-item *:last-child {
