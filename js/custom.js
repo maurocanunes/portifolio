@@ -347,20 +347,28 @@ window.onload = function calculateAge(date)
 }
 $('#myForm').on('submit', function(event) {
     event.preventDefault(); // prevent reload
-    
-    var formData = new FormData(this);
-    formData.append('service_id', 'service_bcr3fod');
-    formData.append('template_id', 'template_amkoj1h');
-    formData.append('user_id', 'uR2CRhS189Ek9e6ry');
- 
-    $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
-        type: 'POST',
-        data: formData,
-        contentType: false, // auto-detection
-        processData: false // no need to parse formData to string
-    }).done(function() {
-        alert('Your mail was sent successfully!');
-    }).fail(function(error) {
-        alert('Oops... ' + JSON.stringify(error));
-    });
+
+    const from_name = document.getElementById('from_name')
+	const from_email = document.getElementById('from_email') 
+	const from_phone_number = document.getElementById('from_phone_number')
+	const from_message = document.getElementById('from_message')
+	if (!from_name.value || !from_email.value || !from_phone_number.value || !from_message.value) {
+		alert("Error sending message \nPlease fill the form correctly")
+	} else {
+		var formData = new FormData(this);
+		formData.append('service_id', 'service_bcr3fod');
+		formData.append('template_id', 'template_amkoj1h');
+		formData.append('user_id', 'uR2CRhS189Ek9e6ry');
+	
+		$.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+		    type: 'POST',
+		    data: formData,
+		    contentType: false, // auto-detection
+		    processData: false // no need to parse formData to string
+		}).done(function() {
+		    alert('Your mail was sent successfully!');
+		}).fail(function(error) {
+		    alert('Oops... ' + JSON.stringify(error));
+		});
+	}
 });
